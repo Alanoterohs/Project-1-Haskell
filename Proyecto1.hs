@@ -135,3 +135,57 @@ esPar (x) | even x = x
                  
 multiplicaPares :: [Int] -> Int
 multiplicaPares xs =  productoria' xs esPar
+
+--Ejercicio 7
+
+--Punto a) La función map, toma una función, una lista, y devuelve una nueva lista con las modificaciones correspondientes
+--la función filter, toma un predicado y una lista, y devuelve una nueva lista con los datos que han podido satisfacer el predicado
+
+--punto b)
+map succ [1,-4,6,2,-8]
+
+      >> [2,-3,7,3,-7]
+
+--punto c)
+
+filter esPositivo [1,-4,6,2,-8]
+
+               >> [1,6,2]
+
+
+--Ejercicio 8
+--recursión
+duplica :: [Int] -> [Int]
+duplica [] = []
+duplica (x:xs) = 2*x : duplica xs
+
+--map
+duplica :: [Int] -> [Int]
+duplica xs = map (2*) xs
+
+
+--Ejercicio 9
+--Recursión
+pares :: [Int] -> [Int]
+pares [] = [] 
+pares (x:xs) | (x `mod` 2 == 0) = x: pares xs
+             | otherwise = pares xs
+
+--map
+pares' :: [Int] -> [Int]
+pares' xs = filter even xs
+
+--Optimización del ejercicio 6)e
+
+--Antes
+esPar :: Int -> Int
+esPar (x) | even x = x
+          | otherwise = 1
+                 
+multiplicaPares :: [Int] -> Int
+multiplicaPares xs =  productoria' xs esPar
+
+--Ahora
+multiplicaPares' :: [Int] -> Int
+multiplicaPares' xs =  productoria (filter even xs)
+
