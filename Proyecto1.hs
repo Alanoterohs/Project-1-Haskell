@@ -189,3 +189,26 @@ multiplicaPares xs =  productoria' xs esPar
 multiplicaPares' :: [Int] -> Int
 multiplicaPares' xs =  productoria (filter even xs)
 
+--Ejercicio 10
+
+primIgualesA :: (Eq a) => a -> [a] -> [a]
+primIgualesA  _ [] = []
+primIgualesA x (y:ys) | (y == x) = y : primIgualesA x ys
+                      | otherwise = []
+
+
+primIgualesA' :: (Eq a) => a -> [a] -> [a]
+primIgualesA' y xs = takeWhile (==y) xs
+
+
+--Ejercicio 11
+
+primIguales :: (Eq a) =>[a] -> [a]
+primIguales [] = []
+primIguales [x] = [x]
+primIguales (x:(y:xs)) | x == y = x: primIguales (y:xs)
+                       | otherwise = x: []
+
+
+primIguales' :: (Eq a) => [a] -> [a]
+primIguales' (y:(x:xs)) = takeWhile (==y) (x:xs)
